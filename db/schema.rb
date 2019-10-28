@@ -10,12 +10,67 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_10_28_044733) do
+ActiveRecord::Schema.define(version: 2019_10_28_112045) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
+  create_table "bookings", force: :cascade do |t|
+    t.bigint "scooter_id", null: false
+    t.bigint "user_id", null: false
+    t.date "start_date"
+    t.date "end_date"
+    t.boolean "confirmed"
+    t.integer "price"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["scooter_id"], name: "index_bookings_on_scooter_id"
+    t.index ["user_id"], name: "index_bookings_on_user_id"
+  end
+
+  create_table "models", force: :cascade do |t|
+    t.string "brand"
+    t.string "name"
+    t.integer "cc"
+    t.string "fuel"
+    t.integer "weight"
+    t.string "size"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "reviews", force: :cascade do |t|
+    t.bigint "booking_id", null: false
+    t.bigint "user_id", null: false
+    t.text "content"
+    t.integer "rating"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["booking_id"], name: "index_reviews_on_booking_id"
+    t.index ["user_id"], name: "index_reviews_on_user_id"
+  end
+
+  create_table "scooters", force: :cascade do |t|
+    t.bigint "model_id", null: false
+    t.bigint "user_id", null: false
+    t.string "location"
+    t.integer "age"
+    t.integer "mileage"
+    t.string "condition"
+    t.string "photo"
+    t.integer "price_per_day"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.string "colour"
+    t.index ["model_id"], name: "index_scooters_on_model_id"
+    t.index ["user_id"], name: "index_scooters_on_user_id"
+  end
+
   create_table "users", force: :cascade do |t|
+    t.string "name"
+    t.string "location"
+    t.string "photo"
+    t.string "bank_account"
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
     t.string "reset_password_token"
@@ -27,4 +82,10 @@ ActiveRecord::Schema.define(version: 2019_10_28_044733) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "bookings", "scooters"
+  add_foreign_key "bookings", "users"
+  add_foreign_key "reviews", "bookings"
+  add_foreign_key "reviews", "users"
+  add_foreign_key "scooters", "models"
+  add_foreign_key "scooters", "users"
 end
