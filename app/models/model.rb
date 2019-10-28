@@ -4,7 +4,7 @@ class Model < ApplicationRecord
   has_many :users, through: :scooters
   has_many :reviews, through: :bookings
 
-  validates :brand, presence: true,
+  validates :brand, presence: true
   validates :name, presence: true, uniqueness: true
   validates :cc, presence: true
   validates :fuel, presence: true
