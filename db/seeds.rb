@@ -5,5 +5,11 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
- Model.create!({name: Faker::Vehicle.model, brand: Faker::Vehicle.make, cc: Faker::Vehicle.engine_size, fuel: Faker::Vehicle.fuel_type, size: ["Small", "Medium", "Large"].sample})
-
+ 20.times do
+  model = Model.new({name: Faker::Vehicle.model, brand: Faker::Vehicle.make, cc: Faker::Vehicle.engine_size, fuel: Faker::Vehicle.fuel_type, size: ["Small", "Medium", "Large"].sample})
+  if model.save
+    puts " model created"
+  else
+    p model.errors.messages
+ end
+end
