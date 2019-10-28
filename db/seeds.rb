@@ -5,3 +5,5 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+ Model.create!({name: Faker::Vehicle.model, brand: Faker::Vehicle.make, cc: Faker::Vehicle.engine_size, fuel: Faker::Vehicle.fuel_type, size: ["Small", "Medium", "Large"].sample})
+
