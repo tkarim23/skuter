@@ -1,0 +1,44 @@
+.container {
+  width: 950px;
+  display: flex;
+  justify-content: space-around;
+  padding-top: 100px;
+}
+
+.small-container {
+  font-size: 28px;
+  width: 400px;
+  height: 550px;
+  background-color: white;
+  box-shadow: 0 0 15px rgba(0,0,0,0.2);
+}
+
+.scooter-photo {
+  width: 400px;
+}
+
+#booking-container {
+  height: 300px;
+}
+
+#new_booking {
+  text-align: center;
+}
+
+.scooter-description {
+  h1{
+    font-size: 28px;
+  }
+  h2{
+    font-size: 28px;
+  }
+  h3{
+    font-size: 28px;
+  }
+  h4{
+    font-size: 28px;
+  }
+  h5{
+    font-size: 28px;
+  }
+}

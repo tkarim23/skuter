@@ -1,3 +1,20 @@
-<h1>Scooters#show</h1>
-<p>Find me in app/views/scooters/show.html.erb</p>
+<div class="container">
+  <div class="small-container">
+    <%= image_tag @scooter.photo, class:"scooter-photo" %>
+    <div class="scooter-description">
+    <h1>model: <%= @scooter.model.name %></h1>
+    <h2>age: <%= @scooter.age %></h2>
+    <h3>mileage: <%= @scooter.mileage %></h3>
+    <h4>condition: <%= @scooter.condition %></h4>
+    <h5>price_per_day: <%= @scooter.price_per_day %></h5>
+    </div>
+  </div>
+  <div class="small-container" id= 'booking-container'>
+  <%= simple_form_for [@scooter, @booking] do |f| %>
+  <%= f.input :start_date, as: :date %>
+  <%= f.input :end_date, as: :date %>
+  <%= f.submit "Book Now", class: "btn btn-primary book-button" %>
+<% end %>
+  </div>
+</div>
 
