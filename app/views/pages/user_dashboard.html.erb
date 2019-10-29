@@ -1,18 +1,83 @@
-<h1>User dashboard</h1>
-<h2><%= link_to "Edit your profile", edit_user_registration_path  %></h2>
-<div class="row">
-  <div class="col-sm-4 offset-md-2">
-    <div class="card">
-      <h3>Name: <%= @user.name %></h3>
-      <p>My Bookings</p>
-      <p>My Listings</p>
-      <% @listings.each do |l| %>
-      <p>Model: <%= l.model.name %></p>
-      <% end %>
-
-
+<div class="container">
+  <div class="row row-1">
+    <h1>User dashboard
+      <%= link_to "Edit your profile", edit_user_registration_path  %>
+    </h1>
+  </div>
+  <div class="row row-2">
+    <ul class="nav nav-tabs" id="myTab" role="tablist">
+      <li class="nav-item">
+        <a class="nav-link active" id="bookings-tab" data-toggle="tab" href="#bookings" role="tab" aria-controls="bookings" aria-selected="true">Bookings</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" id="listings-tab" data-toggle="tab" href="#listings" role="tab" aria-controls="listings" aria-selected="false">Listings</a>
+      </li>
+    </ul><br>
+    <div class="tab-content" id="myTabContent">
+      <div class="tab-pane fade show active" id="bookings" role="tabpanel" aria-labelledby="bookings-tab">
+        <div class="row"><br><br><br>
+          <div class="card col-sm-6">
+            <h3>Upcoming Bookings</h3>
+            <ol>
+              <% @upcoming.each do |booking| %>
+              <li>Model:
+                <%=  booking.scooter.model.name %>
+                Date:
+                <%= booking.start_date %>
+                Duration:
+                <%= (booking.end_date - booking.start_date).to_i %> days
+              </li>
+              <% end %>
+            </ol>
+          </div>
+          <div class="card col-sm-6">
+            <h3>Past Bookings</h3>
+            <ol>
+              <% @past.each do |booking| %>
+              <li>Model:
+                <%=  booking.scooter.model.name %>
+                Date:
+                <%= booking.start_date %>
+                Duration:
+                <%= (booking.end_date - booking.start_date).to_i %> days
+              </li>
+              <% end %>
+            </ol>
+          </div>
+        </div>
+      </div>
+      <div class="tab-pane fade" id="listings" role="tabpanel" aria-labelledby="listings-tab">
+        <div class="row">
+          <div class="card col-sm-6">
+            <h3>Upcoming Listings</h3>
+            <ol>
+              <% @future_income.each do |booking| %>
+              <li>Model:
+                <%=  booking.scooter.model.name %>
+                Date:
+                <%= booking.start_date %>
+                Duration:
+                <%= (booking.end_date - booking.start_date).to_i %> days
+              </li>
+              <% end %>
+            </ol>
+          </div>
+          <div class="card col-sm-6">
+            <h3>Past Listings</h3>
+            <ol>
+              <% @past_income.each do |booking| %>
+              <li>Model:
+                <%=  booking.scooter.model.name %>
+                Date:
+                <%= booking.start_date %>
+                Duration:
+                <%= (booking.end_date - booking.start_date).to_i %> days
+              </li>
+              <% end %>
+            </ol>
+          </div>
+        </div>
+      </div>
     </div>
-
-
   </div>
 </div>
