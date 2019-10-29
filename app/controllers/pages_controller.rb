@@ -3,6 +3,7 @@ class PagesController < ApplicationController
 
   def user_dashboard
     @user = current_user
+    @bookings = Booking.where(user:@user)
     @listings = Scooter.where(user: @user)
   end
 end

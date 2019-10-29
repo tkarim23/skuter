@@ -4,10 +4,17 @@
   <div class="col-sm-4 offset-md-2">
     <div class="card">
       <h3>Name: <%= @user.name %></h3>
+      <% if !@bookings.empty? %>
       <p>My Bookings</p>
+      <% @bookings.each do |b| %>
+       <p>Model: <%= b.scooter.model.name %></p>
+      <% end %>
+      <% end %>
+      <% if !@listings.empty? %>
       <p>My Listings</p>
       <% @listings.each do |l| %>
       <p>Model: <%= l.model.name %></p>
+      <% end %>
       <% end %>
 
 
