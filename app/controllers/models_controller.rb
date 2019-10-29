@@ -7,6 +7,7 @@ class ModelsController < ApplicationController
 
   def show
     @model = Model.find(params[:id])
+    @scooters = Scooter.where(model_id: params[:id])
   end
 
 end
