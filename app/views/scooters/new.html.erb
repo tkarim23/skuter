@@ -1,2 +1,17 @@
 <h1>Scooters#new</h1>
 <p>Find me in app/views/scooters/new.html.erb</p>
+<div class="row justify-content-center">
+  <div class="col-sm-6 col-sm-offset-2">
+    <%= simple_form_for @scooter do |f| %>
+    <%= f.association :model %>
+    <%= f.input :colour %>
+    <%= f.input :location %>
+    <%= f.input :age, as: :integer, label: "Age", hint: "Years" %>
+    <%= f.input :mileage, as: :integer, label: "Mileage", hint: "Kms" %>
+    <%= f.input :condition, collection: ['Pristine', 'Good', 'It works', 'Yours to fix'] %>
+    <%= f.input :photo %>
+    <%= f.input :price_per_day, as: :integer, label: "Price per day", hint: "In local currency" %>
+    <%= f.button :submit %>
+    <% end %>
+  </div>
+</div>
