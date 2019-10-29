@@ -4,11 +4,9 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
-  belongs_to :reviews
-  belongs_to :booking
-  belongs_to :scooter
 
-  validates :name, presence: true
-  validates :location, presence: true
-  validates :bank_account, presence: true, uniqueness: true
+
+  # validates :name, presence: true
+  # validates :location, presence: true
+  # validates :bank_account, presence: true, uniqueness: true
 end
