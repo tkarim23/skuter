@@ -35,3 +35,17 @@
            cc: "150",
            fuel: "gasoline",
            size: "Big")
+10.times do
+ User.create!(email: Faker::Internet.email, password: "password")
+end
+15.times do
+  Scooter.create!(model_id: (1..5).to_a.sample,
+  user_id: (1..5).to_a.sample,
+  location: "canggu",
+  age: (2010..2019).to_a.sample,
+  mileage: (1..10000).to_a.sample,
+  condition: "Good",
+  photo: "https://ik.imagekit.io/hj8sm3kk7/large/gallery/exterior/73/985/honda-scoopy-esp-left-side-view-full-image-128865.jpg",
+  price_per_day: (20000..80000).to_a.sample)
+end
+
