@@ -5,6 +5,9 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+
+ # MODELS
+ Model.destroy_all
  Model.create(
            name: "Vario 125",
            brand: "Honda",
@@ -35,3 +38,5 @@
            cc: "150",
            fuel: "gasoline",
            size: "Big")
+
+# SCOOTERS
