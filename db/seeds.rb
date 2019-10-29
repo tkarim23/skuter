@@ -9,12 +9,11 @@
 
 
 # SCOOTERS
-=======
 10.times do
  User.create!(email: Faker::Internet.email, password: "password")
 end
 15.times do
-  Scooter.create!(model_id: (1..5).to_a.sample,
+  Scooter.create!(model: Model.all.sample,
   user_id: (1..5).to_a.sample,
   location: "canggu",
   age: (2010..2019).to_a.sample,
