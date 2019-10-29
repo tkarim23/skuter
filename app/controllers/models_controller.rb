@@ -1,23 +1,12 @@
 class ModelsController < ApplicationController
     skip_before_action :authenticate_user!, only: [:index, :show]
-  def new
-  end
-
-  def create
-  end
 
   def index
+    @models = Model.all
   end
 
   def show
+    @model = Model.find(params[:id])
   end
 
-  def edit
-  end
-
-  def update
-  end
-
-  def destroy
-  end
 end
