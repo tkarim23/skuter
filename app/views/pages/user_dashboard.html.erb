@@ -1,0 +1,18 @@
+<h1>User dashboard</h1>
+<h2><%= link_to "Edit your profile", edit_user_registration_path  %></h2>
+<div class="row">
+  <div class="col-sm-4 offset-md-2">
+    <div class="card">
+      <h3>Name: <%= @user.name %></h3>
+      <p>My Bookings</p>
+      <p>My Listings</p>
+      <% @listings.each do |l| %>
+      <p>Model: <%= l.model.name %></p>
+      <% end %>
+
+
+    </div>
+
+
+  </div>
+</div>
