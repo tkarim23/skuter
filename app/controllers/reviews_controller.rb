@@ -8,7 +8,7 @@ class ReviewsController < ApplicationController
     @reviews = Review.new(review_params)
     @scooter = Scooter.find(params[:scooter_id])
     @review.scooter = @scooter
-    if @reviews.save
+    if @review.save
       redirect_to scooter_path(@scooter)
     else
       render :new
