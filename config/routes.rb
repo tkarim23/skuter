@@ -9,8 +9,8 @@ Rails.application.routes.draw do
     resources :bookings, only: [:create]
 end
 
-  resources :bookings, only [:show] do
-    resources :reviews, only [:create]
+  resources :bookings, only: [:show] do
+    resources :reviews, only: [:create]
   end
 
   get "user_dashboard", to: "pages#user_dashboard"
