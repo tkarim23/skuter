@@ -1,5 +1,5 @@
 class Model < ApplicationRecord
-  has_many :scooters
+  has_many :scooters, dependent: :destroy
   has_many :bookings, through: :scooters
   has_many :users, through: :scooters
   has_many :reviews, through: :bookings
