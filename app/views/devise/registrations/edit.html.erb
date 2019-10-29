@@ -17,10 +17,27 @@
     <%= f.input :password_confirmation,
                 required: false,
                 input_html: { autocomplete: "new-password" } %>
+    <%= f.input :name,
+                required: false,
+                input_html: { autocomplete: "John Smith" } %>
+    <%= f.input :location,
+                required: false,
+                input_html: { autocomplete: "Canggu" } %>
+    <%= f.input :photo,
+                required: false,
+                input_html: { autocomplete: "upload photo" } %>
+    <%= f.input :bank_account,
+                required: false,
+                input_html: { autocomplete: "bank details" } %>
     <%= f.input :current_password,
                 hint: "we need your current password to confirm your changes",
                 required: true,
                 input_html: { autocomplete: "current-password" } %>
+    <%= f.input :current_password,
+                hint: "we need your current password to confirm your changes",
+                required: true,
+                input_html: { autocomplete: "current-password" } %>
+
   </div>
 
   <div class="form-actions">
