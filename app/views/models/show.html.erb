@@ -1,15 +1,46 @@
+<div class="container">
 
-<div class="card mb-3" style="max-width: 540px;">
-  <div class="row no-gutters">
-    <div class="col-md-4">
-      <img src="https://cdn-image.bisnis.com/posts/2017/04/19/646654/vario.jpg" class="card-img" alt="...">
-    </div>
-    <div class="col-md-8">
-      <div class="card-body">
-        <h5 class="card-title"><%= @model.brand %> - <%= @model.name %></h5>
-        <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-        <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+  <div class="card mb-3">
+    <div class="row no-gutters">
+      <div class="col-md-4">
+        <img src="https://imgd.aeplcdn.com/476x268/bw/models/vespa-zx-125-cbs20190808164916.jpg" class="card-img" alt="...">
+      </div>
+      <div class="col-md-8">
+        <div class="card-body">
+          <h5 class="card-title"><%= @model.brand %> - <%= @model.name %></h5>
+          <p class="card-text">
+            <ul>
+              <li><%= @model.cc %></li>
+              <li><%= @model.fuel %></li>
+              <li><%= @model.weight %></li>
+              <li><%= @model.size %></li>
+            </ul>
+          </p>
+          <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+        </div>
       </div>
     </div>
   </div>
+
+  <div class="scooter-cards d-flex">
+
+  <% @scooters.each do |scooter| %>
+  <%= link_to scooter_path(scooter) do  %>
+<div class="card" style="width: 18rem;">
+  <img src=<%=scooter.photo%> class="card-img-top" alt="...">
+  <div class="card-body">
+    <p class="card-text"><%= scooter.model.brand%> - <%=scooter.model.name %></p>
+    <p><%= scooter.price_per_day %></p>
+  </div>
 </div>
+<% end %>
+<% end %>
+
+</div>
+
+</div>
+
+
+
+
+
