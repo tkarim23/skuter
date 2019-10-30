@@ -18,7 +18,11 @@
 }
 
 .card {
-  width: 800px;
+  //width: 800px;
+}
+
+.scooter-show-card{
+width:100%
 }
 
 .scooter-photo {
@@ -27,6 +31,12 @@
 
 #booking-container {
   // height: 300px;
+    width:20%
+
+}
+#scooter-container {
+  // height: 300px;
+  width:80%
 }
 
 #new_booking {
