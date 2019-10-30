@@ -1,5 +1,5 @@
-<div class="card-category mb-5" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(https://images.unsplash.com/photo-1551368321-dddf8a05c459?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1350&q=80)">
-  <h1 class="my-5 text-center">Have your next adventure with <strong>SKUTER</h1>
+<div class="card-category mb-5 rounded-0" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(https://images.unsplash.com/photo-1551368321-dddf8a05c459?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1350&q=80)">
+  <h1 class="my-5 text-center">Have your next adventure with <strong>SKUTER</strong></h1>
 </div>
 
 <div class="container">
@@ -11,13 +11,13 @@
     </div>
   </div>
   <div class="cards">
-    <%  @models.each do |model| %>
+    <% @models.each do |model| %>
     <%= link_to model_path(model) do %>
     <div class="card-category shadow p-3 mb-5 bg-white rounded" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(<%= model.photo_url %>)">
       <%= model.brand %> -
-      <%= model.name%>
+      <%= model.name %>
     </div>
-    <% end  %>
+    <% end %>
     <% end %>
   </div>
 </div>

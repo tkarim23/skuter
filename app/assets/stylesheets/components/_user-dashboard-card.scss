@@ -34,3 +34,8 @@
 .tab-content > .active {
     display: flex;
 }
+
+.nav-tabs .nav-item.show .nav-link {
+  background-color: black;
+  color: white;
+}
