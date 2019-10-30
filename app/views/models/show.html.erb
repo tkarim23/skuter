@@ -63,12 +63,10 @@
   <div id="map" style="height: 90vh; width: 40%; overflow: hidden;">
     <script>
     console.log('<%= raw @markers.length %>')
+    console.log('<%= @mapCenter %>')
     var map;
-    let ruby_lat = <%= @markers[0][:lat] %>;
-    let ruby_lng = <%= @markers[0][:lng] %>;
-
     function initMap() {
-      let mapCenter = new google.maps.LatLng(ruby_lat,ruby_lng);
+      let mapCenter = new google.maps.LatLng(<%= @mapCenter[0] %>,<%= @mapCenter[1] %>);
       map = new google.maps.Map(
         document.getElementById('map'), {
           center: mapCenter,
