@@ -1,11 +1,9 @@
-  <div class="card-category mb-4" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(https://images.unsplash.com/photo-1551368321-dddf8a05c459?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1350&q=80)">
+  <div class="card-category mb-4" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(https://images.unsplash.com/photo-1541465859444-326ef2fb999b?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1778&q=80)">
     <h2 class="my-5 text-center">My upcoming <strong>SKUTER</strong> adventures</h2>
   </div>
-    <p><%= link_to "Edit your profile", edit_user_registration_path  %></p>
+
 
 <div class="container">
-
-  <div class="row row-2">
 
     <ul class="nav nav-tabs" id="myTab" role="tablist">
       <li class="nav-item">
@@ -16,89 +14,72 @@
       </li>
     </ul><br>
 
-    <div class="tab-content" id="myTabContent">
-      <div class="tab-pane fade show active" id="bookings" role="tabpanel" aria-labelledby="bookings-tab">
-        <div class="row"><br><br><br>
-          <div class="card col-sm-6">
-            <h3>Upcoming Bookings</h3>
-            <ol>
+    <div class="tab-content tab-pane fade show active mx-auto" id="myTabContent">
+
+      <div class="tab-pane fade show active bookings-container" id="bookings" role="tabpanel" aria-labelledby="bookings-tab">
+
+          <div class="card col-sm-6 col-md-6">
+
+            <h3 class="my-3">Upcoming Bookings</h3>
+
               <% @upcoming.each do |booking| %>
-              <li>Model:
-                <%=  booking.scooter.model.name %>
-                Date:
-                <%= booking.start_date %>
-                Duration:
-                <%= (booking.end_date - booking.start_date).to_i %> days
-              </li>
+              <div class="card-product mb-3" >
+                <img src="<%= booking.scooter.model.photo_url %>" />
+                <div class="card-product-infos">
+                  <h2><%= booking.scooter.model.brand %> - <%= booking.scooter.model.name %></h2>
+                  <p><%= booking.start_date %> - <%= booking.end_date %> <strong><%= (booking.end_date - booking.start_date).to_i %> days</strong></p>
+                </div>
+              </div>
               <% end %>
-            </ol>
+
           </div>
-          <div class="card col-sm-6">
-            <h3>Past Bookings</h3>
-            <ol>
+          <div class="card col-sm-6 col-md-6">
+            <h3 class="my-3">Past Bookings</h3>
+
               <% @past.each do |booking| %>
-              <li>Model:
-                <%=  booking.scooter.model.name %>
-                Date:
-                <%= booking.start_date %>
-                Duration:
-                <%= (booking.end_date - booking.start_date).to_i %> days
-              </li>
+              <div class="card-product mb-3" >
+                <img src="<%= booking.scooter.model.photo_url %>" />
+                <div class="card-product-infos">
+                  <h2><%= booking.scooter.model.brand %> - <%= booking.scooter.model.name %></h2>
+                  <p><%= booking.start_date %> - <%= booking.end_date %> <strong><%= (booking.end_date - booking.start_date).to_i %> days</strong></p>
+                </div>
+              </div>
               <% end %>
-            </ol>
+
           </div>
-        </div>
+
       </div>
       <div class="tab-pane fade" id="listings" role="tabpanel" aria-labelledby="listings-tab">
-        <div class="row">
-          <div class="card col-sm-6">
-            <h3>Upcoming Listings</h3>
-            <ol>
+          <div class="card col-sm-6 col-md-6">
+            <h3 class="my-3">Upcoming Listings</h3>
+
               <% @future_income.each do |booking| %>
-              <li>Model:
-                <%=  booking.scooter.model.name %>
-                Date:
-                <%= booking.start_date %>
-                Duration:
-                <%= (booking.end_date - booking.start_date).to_i %> days
-              </li>
+              <div class="card-product mb-3" >
+                <img src="<%= booking.scooter.model.photo_url %>" />
+                <div class="card-product-infos">
+                  <h2><%= booking.scooter.model.brand %> - <%= booking.scooter.model.name %></h2>
+                  <p><%= booking.start_date %> - <%= booking.end_date %> <strong><%= (booking.end_date - booking.start_date).to_i %> days</strong></p>
+                </div>
+              </div>
               <% end %>
-            </ol>
           </div>
-          <div class="card col-sm-6">
-            <h3>Past Listings</h3>
-            <ol>
+          <div class="card col-sm-6 col-md-6">
+            <h3 class="my-3">Past Listings</h3>
+
               <% @past_income.each do |booking| %>
-              <li>Model:
-                <%=  booking.scooter.model.name %>
-                Date:
-                <%= booking.start_date %>
-                Duration:
-                <%= (booking.end_date - booking.start_date).to_i %> days
-              </li>
+              <div class="card-product mb-3" >
+                <img src="<%= booking.scooter.model.photo_url %>" />
+                <div class="card-product-infos">
+                  <h2><%= booking.scooter.model.brand %> - <%= booking.scooter.model.name %></h2>
+                  <p><%= booking.start_date %> - <%= booking.end_date %> <strong><%= (booking.end_date - booking.start_date).to_i %> days</strong></p>
+                </div>
+              </div>
               <% end %>
-            </ol>
+
           </div>
-        </div>
       </div>
     </div>
-  </div>
 </div>
 
-<div class="card-product">
-  <img src="https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/skateboard.jpg" />
-  <div class="card-product-infos">
-    <h2>Product name</h2>
-    <p>Product description with <strong>relevant info</strong> only.</p>
-  </div>
-</div>
 
-<ul class="list-inline tabs-underlined">
-  <li>
-    <a href="#" class="tab-underlined active">Bookings</a>
-  </li>
-  <li>
-    <a href="#" class="tab-underlined">Listings</a>
-  </li>
-</ul>
 
