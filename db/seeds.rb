@@ -79,13 +79,13 @@ puts "seeding Scooters"
 15.times do
   Scooter.create!(model: Model.all.sample,
   user: User.all.sample,
-  location: ["canggu", "london", "madrid", "paris"].sample
-  age: (2010..2019).to_a.sample,
-  mileage: (1..10000).to_a.sample,
-  condition: condition: ['Pristine', 'Good', 'It works', 'Yours to fix'].sample,
+  location: ["canggu", "london", "madrid", "paris"].sample,
+  age: rand(2010..2019),
+  mileage: rand(1..10000),
+  condition: ['Pristine', 'Good', 'It works', 'Yours to fix'].sample,
   photo: "https://ik.imagekit.io/hj8sm3kk7/large/gallery/exterior/73/985/honda-scoopy-esp-left-side-view-full-image-128865.jpg",
-  price_per_day: (20000..80000).to_a.sample),
-  colour: ["Red", 'white', 'black', 'blue', ‘pink’].sample
+  price_per_day: rand(20000..80000),
+  colour: ["Red", 'white', 'black', 'blue', 'pink'].sample)
 end
 
 puts "seeding Scooters - Complete!"
@@ -136,8 +136,3 @@ end
   review.booking = booking
   review.save
 end
-
-
-
-
-
