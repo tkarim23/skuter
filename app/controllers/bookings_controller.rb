@@ -1,17 +1,20 @@
 class BookingsController < ApplicationController
   before_action :set_booking, only: [:show, :edit, :update, :destroy]
-  before_create :check_availability
-
-  def new
-    @booking = Booking.new
-  end
 
   def create
-    @booking = Booking.new(booking_params)
+    @booking = Booking.new
+    start_date = Date.parse(params[:booking][:start_date].split(' ')[0])
+    end_date = Date.parse(params[:booking][:start_date].split(' ')[2])
+    @booking.start_date = start_date
+    @booking.end_date = end_date
+    @booking.user = current_user
+    @booking.scooter_id = params[:scooter_id]
+    @booking.save
     if @booking.save
-      #redirect to
+      redirect_to user_dashboard_path
     else
-      render :new
+      redirect_to scooter_path(params[:scooter_id])
+    end
   end
 
   def show
@@ -30,19 +33,12 @@ class BookingsController < ApplicationController
 
    private
 
-
-
-def self.check_availability(booking_params)
-  bookings = Booking.where('start_date < ? OR end_date > ?', self.start_date, self.end_date)
-  return bookings.empty?
-end
-
   def set_booking
     @booking = Booking.find(params[:id])
   end
 
   def booking_params
-    params.require(:booking).permit(:user_id, :scooter_id, :start_date, :end_date)
+    params.require(:booking).permit(:start_date)
   end
 
 end
