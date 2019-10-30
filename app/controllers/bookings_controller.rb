@@ -12,6 +12,7 @@ class BookingsController < ApplicationController
       #redirect to
     else
       render :new
+    end
   end
 
   def show
