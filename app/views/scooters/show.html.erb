@@ -11,11 +11,15 @@
     </div>
   </div>
   <div class="small-container" id= 'booking-container'>
-  <%= simple_form_for [@scooter, @booking] do |f| %>
-  <%= f.input :start_date, as: :date %>
-  <%= f.input :end_date, as: :date %>
-  <%= f.submit "Book Now", class: "btn btn-primary book-button" %>
-<% end %>
+  <div id='scooter-booking-dates' data-unavailable="<%= @scooter.unavailable_dates.to_json %>">
+    <% if current_user.id != @scooter.user_id  %>
+       <%= simple_form_for([@scooter, @booking]) do |f| %>
+           <%= f.input :start_date, as: :string, type: :text%>
+           <%= f.submit "Book", class: "btn btn-primary btn-lg btn-block btn-booking" %>
+        <% end %>
+    <% end %>
+ </div>
+
   </div>
 </div>
 </div>
