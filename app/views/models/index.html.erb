@@ -1,26 +1,23 @@
-<div class="card-category mb-5" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(https://images.unsplash.com/photo-1551368321-dddf8a05c459?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1350&q=80)">
-  <h1 class="my-5 text-center">Have your next adventure with a <strong>SKUTER</h1>
+<div class="card-category mb-5 rounded-0" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(https://images.unsplash.com/photo-1551368321-dddf8a05c459?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1350&q=80)">
+  <h1 class="my-5 text-center">Have your next adventure with <strong>SKUTER</strong></h1>
 </div>
+
 <div class="container">
   <div class="homepage-search bar">
     <h5>Where will it take you?</h5>
     <div class="search-form">
       <input class="form-control string required" type="text" name="search[query]" id="location" placeholder="city" />
-      <button name="button" type="submit" class="btn btn-flat">
-        <i class="fas fa-search"></i> Search
-      </button>
+      <button name="button" type="submit" class="btn btn-flat"><i class="fas fa-search"></i></button>
     </div>
   </div>
-</div>
-</div>
-<div class="cards">
-  <%  @models.each do |model| %>
-  <%= link_to model_path(model) do %>
-  <div class="card-category shadow p-3 mb-5 bg-white rounded" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(<%= model.photo_url %>)">
-    <%= model.brand %> -
-    <%= model.name%>
+  <div class="cards">
+    <% @models.each do |model| %>
+    <%= link_to model_path(model) do %>
+    <div class="card-category shadow p-3 mb-5 bg-white rounded" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(<%= model.photo_url %>)">
+      <%= model.brand %> -
+      <%= model.name %>
+    </div>
+    <% end %>
+    <% end %>
   </div>
-  <% end  %>
-  <% end %>
-</div>
 </div>

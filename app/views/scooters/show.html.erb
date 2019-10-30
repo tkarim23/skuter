@@ -1,44 +1,53 @@
 <div class="container">
   <div class="custom-container">
-    <div class="small-container">
-      <%= image_tag @scooter.photo, class:"scooter-photo" %>
-      <div class="scooter-description">
-        <h1>model:
-          <%= @scooter.model.name %>
-        </h1>
-        <h2>age:
-          <%= @scooter.age %>
-        </h2>
-        <h3>mileage:
-          <%= @scooter.mileage %>
-        </h3>
-        <h4>condition:
-          <%= @scooter.condition %>
-        </h4>
-        <h5>price_per_day:
-          <%= @scooter.price_per_day %>
-        </h5>
+    <div class="small-container" id='scooter-container'>
+      <div class="card">
+        <img src="https://ik.imagekit.io/hj8sm3kk7/large/gallery/exterior/73/985/honda-scoopy-esp-left-side-view-full-image-128865.jpg" class="card-img-top" alt="">
+        <div class="card-body">
+          <p class="card-text">model:
+                <%= @scooter.model.name %>
+              age:
+                <%= @scooter.age %>
+              mileage:
+                <%= @scooter.mileage %>
+              condition:
+                <%= @scooter.condition %>
+              price_per_day:
+                <%= @scooter.price_per_day %>
+            </p>
+        </div>
       </div>
     </div>
     <div class="small-container" id='booking-container'>
       <div id='scooter-booking-dates' data-unavailable="<%= @scooter.unavailable_dates.to_json %>">
         <% if current_user.id != @scooter.user_id  %>
         <%= simple_form_for([@scooter, @booking]) do |f| %>
-        <%= f.input :start_date, as: :string, type: :text%>
+        <%= f.label :start_date, 'Choose your Date', class: "text-center" %>
+        <%= f.input :start_date, as: :string, type: :text , label: false%>
         <%= f.submit "Book", class: "btn btn-primary btn-lg btn-block btn-booking" %>
         <% end %>
         <% end %>
       </div>
     </div>
   </div>
-  <div class="row">
-    <div class="card col-md-6">
-      <h3>Reviews:</h3>
-      <% @reviews.each do |review| %>
-      <p>By: <%= review.user.email  %></p>
-      <p> "<%= review.content %>"</p>
-      <p> Rating: <%= "*"*review.rating  %></p>
-      <% end %>
-    </div>
+</div>
+
+
+
+
+<div class="container">
+  <h3>Reviews:</h3>
+    <% @reviews.each do |review| %>
+<div class="card">
+  <div class="card-body" p-3>
+    <%= review.content %>
+    By: <%= review.user.email  %>
+    Rating: <%= "*"*review.rating  %>
   </div>
 </div>
+    <% end %>
+  </div>
+</div>
+  </div>
+
+
