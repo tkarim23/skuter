@@ -7,7 +7,14 @@ class ModelsController < ApplicationController
 
   def show
     @model = Model.find(params[:id])
-    @scooters = Scooter.where(model_id: params[:id])
+    @scooters = @model.scooters
+    @geocoded = @model.scooters.geocoded
+    @markers = @geocoded.map do |scooter|
+      {
+        lat: scooter.latitude,
+        lng: scooter.longitude
+      }
+    end
   end
 
 end

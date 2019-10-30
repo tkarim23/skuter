@@ -1,51 +1,92 @@
-
-  <div class="card bg-dark mb-4 text-white">
-    <img src=<%= @model.photo_url %> class="card-img" alt="...">
-    <div class="card-img-overlay">
-      <h1 class="card-title text-center pt-5"><%= @model.brand %> - <%= @model.name %></h1>
-      <div class="row mt-3">
+<div class="card bg-dark mb-4 text-white">
+  <img src=<%=@model.photo_url %> class="card-img" alt="...">
+  <div class="card-img-overlay">
+    <h1 class="card-title text-center pt-5">
+      <%= @model.brand %> -
+      <%= @model.name %>
+    </h1>
+    <div class="row mt-3">
       <div class="col-md-6 p-5">
-      <p class="card-text">
+        <p class="card-text">
           <ul>
-            <li><h3>Engine Size: <%= @model.cc %>CC</h3></li>
-            <li><h3>Fuel Type: <%= @model.fuel %></h3></li>
-            <li><h3>Weight: <%= @model.weight %> kg</h3></li>
-            <li><h3>Size: <%= @model.size %></h3></li>
+            <li>
+              <h3>Engine Size:
+                <%= @model.cc %>CC</h3>
+            </li>
+            <li>
+              <h3>Fuel Type:
+                <%= @model.fuel %>
+              </h3>
+            </li>
+            <li>
+              <h3>Weight:
+                <%= @model.weight %> kg</h3>
+            </li>
+            <li>
+              <h3>Size:
+                <%= @model.size %>
+              </h3>
+            </li>
           </ul>
-      </p>
+        </p>
       </div>
       <div class="col-md-6 p-5">
-      <h3 class="card-text"><%= @model.description %></h3>
-    </div>
-    </div>
+        <h3 class="card-text">
+          <%= @model.description %>
+        </h3>
+      </div>
     </div>
   </div>
-<div class="container">
-
-
-
-
-  <div class="scooter-cards">
-  <div class="row">
-    <% @scooters.each do |scooter| %>
-    <div class="col-md-4 col-xs-12">
-      <%= link_to scooter_path(scooter) do  %>
-      <div class="card mb-3 shadow p-3 mb-5 bg-white rounded" style="">
-        <img src=<%=scooter.photo%> class="card-img-top" alt="...">
-        <div class="card-body">
-          <p class="card-text"><%= scooter.model.brand%> - <%=scooter.model.name %></p>
-          <p><%= scooter.price_per_day %></p>
+</div>
+<div class="second_container" style="display: flex">
+  <div class="scooter-cards" style="width:60%">
+    <div class="row">
+      <% @scooters.each do |scooter| %>
+      <div class="col-md-4 col-xs-12">
+        <%= link_to scooter_path(scooter) do  %>
+        <div class="card mb-3 shadow p-3 mb-5 bg-white rounded" style="">
+          <img src=<%=scooter.photo%> class="card-img-top" alt="...">
+          <div class="card-body">
+            <p class="card-text">
+              <%= scooter.model.brand%> -
+              <%=scooter.model.name %>
+            </p>
+            <p>
+              <%= scooter.price_per_day %>
+            </p>
+          </div>
         </div>
+        <% end %>
       </div>
       <% end %>
     </div>
+  </div>
+  <div id="map" style="height: 90vh; width: 40%; overflow: hidden;">
+    <script>
+    console.log('<%= raw @markers.length %>')
+    var map;
+    let ruby_lat = <%= @markers[0][:lat] %>;
+    let ruby_lng = <%= @markers[0][:lng] %>;
+
+    function initMap() {
+      let mapCenter = new google.maps.LatLng(ruby_lat,ruby_lng);
+      map = new google.maps.Map(
+        document.getElementById('map'), {
+          center: mapCenter,
+          zoom: 8
+        });
+      <% @markers.each do |coords| %>
+    var marker = new google.maps.Marker({
+      position: new google.maps.LatLng(<%= coords[:lat]%>,<%= coords[:lng] %>),
+      map: map
+    });
     <% end %>
+
+    }
+
+    </script>
+    <!-- <img src="https://api.mapbox.com/styles/v1/mapbox/streets-v11/static/2.3381,48.8693,10.45,0,0/600x1000?access_token=pk.eyJ1IjoieWNsOTI0IiwiYSI6ImNrMW01MTAxMjAxbjUzZHQxMDkzNmluOHgifQ.YmLp7JF9s4IMwT_rZ4FeuQ" alt=""> -->
+  </div>
 </div>
-
-</div>
-
-</div>
-
-
-
-
+<script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBqh7gsRVNiLmZ0L_iOn6Dz22i3tPk3i60&callback=initMap">
+</script>
