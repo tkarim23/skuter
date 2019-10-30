@@ -10,11 +10,7 @@ class BookingsController < ApplicationController
     @booking.user = current_user
     @booking.scooter_id = params[:scooter_id]
     @booking.save
-    if @booking.save
       redirect_to user_dashboard_path
-    else
-      redirect_to scooter_path(params[:scooter_id])
-    end
   end
 
   def show
