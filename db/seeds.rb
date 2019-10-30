@@ -1,3 +1,5 @@
+require 'faker'
+
 # This file should contain all the record creation needed to seed the database with its default values.
 # The data can then be loaded with the rails db:seed command (or created alongside the database with db:setup).
 #
@@ -76,15 +78,66 @@ puts "seeding Scooters"
 
 15.times do
   Scooter.create!(model: Model.all.sample,
-  user_id: (1..5).to_a.sample,
-  location: "canggu",
+  user: User.all.sample,
+  location: ["canggu", "london", "madrid", "paris"].sample
   age: (2010..2019).to_a.sample,
   mileage: (1..10000).to_a.sample,
-  condition: "Good",
+  condition: condition: ['Pristine', 'Good', 'It works', 'Yours to fix'].sample,
   photo: "https://ik.imagekit.io/hj8sm3kk7/large/gallery/exterior/73/985/honda-scoopy-esp-left-side-view-full-image-128865.jpg",
-  price_per_day: (20000..80000).to_a.sample)
+  price_per_day: (20000..80000).to_a.sample),
+  colour: ["Red", 'white', 'black', 'blue', ‘pink’].sample
 end
 
 puts "seeding Scooters - Complete!"
+
+#Bookings and reviews
+
+
+def random_date_past
+from = Date.parse('2019/1/1')
+till = Date.today
+from + rand(till - from)
+end
+
+def random_date_upcoming
+from = Date.today
+till = Date.parse('2020/12/31')
+from + rand(till - from)
+end
+
+ # Bookings past
+ 20.times do
+  fecha = random_date_past
+  booking =   Booking.new(user: User.all.sample,
+             scooter: Scooter.all.sample,
+             start_date: fecha - rand(1..10) ,
+             end_date: fecha )
+  booking.save
+  review = Review.new(
+      user: User.all.sample,
+      content: Faker::Restaurant.review,
+      rating: rand(0..5))
+  review.booking = booking
+  review.save
+end
+
+  # Bookings upcoming
+  20.times do
+    fecha2 = random_date_upcoming
+  booking = Booking.new(user: User.all.sample,
+             scooter: Scooter.all.sample,
+             start_date: fecha2 ,
+             end_date: fecha2 + rand(1..10)  )
+  booking.save
+  review = Review.new(
+      user: User.all.sample,
+      content: Faker::Restaurant.review,
+      rating: rand(0..5))
+  review.booking = booking
+  review.save
+end
+
+
+
 
 
