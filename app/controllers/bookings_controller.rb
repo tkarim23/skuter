@@ -16,6 +16,7 @@ class BookingsController < ApplicationController
 
   def show
     @scooter = @booking.scooter
+    @review = Review.new
   end
 
   def edit
