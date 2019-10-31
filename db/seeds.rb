@@ -71,7 +71,7 @@ puts "seeding Users"
  User.create!(
   email: Faker::Internet.email,
   password: "password",
-  introdution: "#{Faker::Quote.most_interesting_man_in_the_world}. #{Faker::Quote.most_interesting_man_in_the_world}",
+  introduction: "#{Faker::Quote.most_interesting_man_in_the_world}. #{Faker::Quote.most_interesting_man_in_the_world}",
   name:Faker::Books::Dune.character,
   location:["canggu", "london", "madrid", "paris", "singapore", "beijing", "tokyo", "barcelona", "mumbai", "berlin", "Valence", "Rome"].sample,
   photo:"photo.jpg"
