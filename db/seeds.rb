@@ -68,7 +68,14 @@ puts "seeding Models - Complete"
 puts "seeding Users"
 
 10.times do
- User.create!(email: Faker::Internet.email, password: "password")
+ User.create!(
+  email: Faker::Internet.email,
+  password: "password",
+  introdution: "#{Faker::Quote.most_interesting_man_in_the_world}. #{Faker::Quote.most_interesting_man_in_the_world}",
+  name:Faker::Books::Dune.character,
+  location:["canggu", "london", "madrid", "paris", "singapore", "beijing", "tokyo", "barcelona", "mumbai", "berlin", "Valence", "Rome"].sample,
+  photo:"photo.jpg"
+  )
 end
 
 puts "seeding Users - Complete!"
