@@ -17,7 +17,7 @@ class ModelsController < ApplicationController
   end
 
   def show
-    @mapCenter = session[:coordinates]
+    @mapCenter = session[:coordinates] || [-8.6478175, 115.1385192]
     @model = Model.find(params[:id])
     @scooters = @model.scooters.near(@mapCenter, 100)
     @markers = @scooters.map do |scooter|
