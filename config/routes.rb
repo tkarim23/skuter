@@ -14,4 +14,5 @@ end
   end
 
   get "user_dashboard", to: "pages#user_dashboard"
+  post "confirm_booking/:booking_id", to: "bookings#confirm_booking", as: :confirm_booking
 end
