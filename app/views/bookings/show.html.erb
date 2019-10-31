@@ -3,10 +3,14 @@
   </div>
 
 <div class="container">
-  <div class="d-flex">
+  <div class="d-flex mb-5">
 
   <div class="booking-show p-2" style="width: 60%">
-    <h3 class="text-center mb-5">Your upcoming adventure is in <strong><%= (@booking.start_date - Date.today).to_i %> days</strong></h3>
+    <% if (@booking.start_date - Date.today).to_i >= 0 %>
+    <h3 class="text-center mb-3">Your upcoming adventure is in <strong><%= (@booking.start_date - Date.today).to_i %> days</strong></h3>
+    <% else %>
+    <h3 class="text-center mb-3">Your adventure was <strong><%= (Date.today - @booking.start_date).to_i %> days ago</strong></h3>
+    <% end %>
 <!--     <div class="card">
       <img src=<%= @booking.scooter.photo %> class="card-img-top" alt="...">
       <div class="card-body">
@@ -27,11 +31,13 @@
 
   </div>
 
-  <div class="host-details p-2 d-flex flex-column" style="width: 40%">
-    <h3 class="text-center mb-5">Meet your fellow <strong>biker</strong></h3>
-    <img src="https://assets.entrepreneur.com/content/3x2/2000/20190502194704-ent19-june-editorsnote.jpeg"<%#= @booking.scooter.user.photo %> alt="" class="avatar-square-large mx-auto">
+  <div class="host-details p-2" style="width: 40%">
+    <h3 class="text-center mb-3">Meet your fellow <strong>biker</strong></h3>
+    <div class="card p-3">
+    <img src="https://assets.entrepreneur.com/content/3x2/2000/20190502194704-ent19-june-editorsnote.jpeg"<%#= @booking.scooter.user.photo %> alt="" class="avatar-square-large mb-3 mx-auto">
     <h5 class="text-center mb-3">James</h5>
-    <h6> Hi! I learnt to ride a motorbike before I learnt to walk. I'm passionate about sharing my city and letting people experience it through the freedom a scooter gives you. Likewise I love travelling to new places and exploring by scooter. The wind in your hair feeling is unmatchable when getting around!</h6>
+    <h6> Hi! I learnt to ride a motorbike before I learnt to walk. I'm passionate about sharing my city and letting people experience it through the freedom a scooter gives you. Likewise I love travelling to new places and exploring by two wheels. The wind in your hair feeling is unmatchable when getting around!</h6>
+  </div>
   </div>
 
   </div>
