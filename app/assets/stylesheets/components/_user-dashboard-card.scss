@@ -39,3 +39,20 @@
   background-color: black;
   color: white;
 }
+
+.bottom-right {
+display: flex;
+justify-content: flex-end;
+position: relative;
+top: -51px;
+left: 197px;
+font-size: 25px;
+}
+
+#red {
+  color: red;
+}
+
+#green {
+  color: green;
+}
