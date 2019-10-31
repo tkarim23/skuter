@@ -2,12 +2,13 @@
   <h1 class="my-5 text-center">Have your next adventure with <strong>SKUTER</strong></h1>
 </div>
 <div class="container">
-  <div class="homepage-search bar">
+  <div class="homepage-search bar mb-5">
     <h5>Where will it take you?</h5>
-    <div class="search-form">
-      <form action="/models" method="get">
+    <div class="search-form d-block">
+      <form action="/models" method="get" >
         <input class="form-control string required" type="text" name="query" id="location" placeholder="city" />
         <button name="button" type="submit" class="btn btn-flat"><i class="fas fa-search"></i></button>
+      </form>
     </div>
   </div>
   <% if @query %>
@@ -16,9 +17,9 @@
       <%= @models.count %> motorbike models out of our
       <%= Model.count %> on our website.</p>
     <% else %>
-    <h2>All
+    <h3>All
       <%= Model.count %> motorbike types.
-    </h2>
+    </h3>
     <% end %>
   <div class="cards">
     <% @models.each do |model| %>

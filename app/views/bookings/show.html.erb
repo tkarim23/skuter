@@ -6,14 +6,7 @@
     <div class="booking-show p-2" style="width: 60%">
       <h3 class="text-center mb-5">Your upcoming adventure is in <strong>
           <%= (@booking.start_date - Date.today).to_i %> days</strong></h3>
-      <!--     <div class="card">
-      <img src=<%= @booking.scooter.photo %> class="card-img-top" alt="...">
-      <div class="card-body">
-        <h5 class="card-title"><%= @booking.scooter.model.brand %> - <%= @booking.scooter.model.name  %></h5>
-        <p class="card-text"></p>
-        <a href="#" class="btn btn-primary">Go somewhere</a>
-      </div> -->
-      <!-- </div> -->
+
       <div class="card-product mb-3">
         <img src="<%= @booking.scooter.model.photo_url %>" />
         <div class="card-product-infos">

@@ -45,7 +45,9 @@
   <div class="card-body" p-3>
     <%= review.content %>
     By: <%= review.user.email  %>
-    Rating: <%= "*"*review.rating  %>
+    Rating: <% review.rating.times do %>
+    <i class='fas fa-star'></i>
+    <% end %>
   </div>
 </div>
     <% end %>

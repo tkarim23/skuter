@@ -29,18 +29,24 @@ body {
   display: flex;
 }
 
+.search-form form {
+  display: flex;
+}
+
+
+
 .btn-flat {
   color: white;
   padding: 8px 24px;
   border-radius: 4px;
-  background: #1EDD88;
+  background: black;
   transition: background 0.3s ease;
   display: flex;
   margin-left: 10px;
 }
 
 .btn-flat:hover {
-  background: #1BCB7F;
+  background: #564e50;
   color: white;
 }
 
