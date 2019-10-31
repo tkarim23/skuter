@@ -76,8 +76,8 @@ puts "seeding Users - Complete!"
 # SCOOTERS
 puts "seeding Scooters"
 
-15.times do
-  Scooter.create!(model: Model.all.sample,
+50.times do
+  scooter = Scooter.new(model: Model.all.sample,
   user: User.all.sample,
   location: ["canggu", "london", "madrid", "paris", "singapore", "beijing", "tokyo", "barcelona", "mumbai", "berlin", "Valence", "Rome"].sample,
   age: rand(2010..2019),
@@ -86,12 +86,15 @@ puts "seeding Scooters"
   photo: "https://ik.imagekit.io/hj8sm3kk7/large/gallery/exterior/73/985/honda-scoopy-esp-left-side-view-full-image-128865.jpg",
   price_per_day: rand(20000..80000),
   colour: ["Red", 'white', 'black', 'blue', 'pink'].sample)
+  scooter.title = "#{scooter.model.name} #{Faker::Marketing.buzzwords}"
+  scooter.save!
 end
 
 puts "seeding Scooters - Complete!"
 
 #Bookings and reviews
 
+puts "Seeding bookings"
 
 def random_date_past
 from = Date.parse('2019/1/1')
@@ -106,12 +109,13 @@ from + rand(till - from)
 end
 
  # Bookings past
- 20.times do
+ 50.times do
   fecha = random_date_past
   booking =   Booking.new(user: User.all.sample,
              scooter: Scooter.all.sample,
              start_date: fecha - rand(1..10) ,
-             end_date: fecha )
+             end_date: fecha)
+  booking.price = (booking.scooter.price_per_day * (booking.end_date-booking.start_date)).to_i
   booking.save
   review = Review.new(
       user: User.all.sample,
@@ -122,12 +126,13 @@ end
 end
 
   # Bookings upcoming
-  20.times do
+  50.times do
     fecha2 = random_date_upcoming
   booking = Booking.new(user: User.all.sample,
              scooter: Scooter.all.sample,
              start_date: fecha2 ,
              end_date: fecha2 + rand(1..10)  )
+  booking.price = (booking.scooter.price_per_day * (booking.end_date-booking.start_date)).to_i
   booking.save
   review = Review.new(
       user: User.all.sample,
