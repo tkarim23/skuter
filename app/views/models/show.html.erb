@@ -1,21 +1,36 @@
 <div class="model-show-card">
-   <img src=<%= @model.photo_url %> class="card-img" alt="...">
-   <div class="model-show-card-text p-5">
-     <h2 class="mb-4"><%= @model.brand %> - <%= @model.name %></h2>
-     <h6 class="mb-5"><%= @model.description %></h6>
-     <h4 class="mb-4">Specs:</h4>
-     <ul class="list-unstyled">
-       <li><h6>Engine Size: <%= @model.cc %>CC</h6></li>
-       <li><h6>Fuel Type: <%= @model.fuel %></h6></li>
-       <li><h6>Weight: <%= @model.weight %> kg</h6></li>
-       <li><h6>Size: <%= @model.size %></h6></li>
-     </ul>
-   </div>
- </div>
-
-
-
-
+  <img src=<%=@model.photo_url %> class="card-img" alt="...">
+  <div class="model-show-card-text p-5">
+    <h2 class="mb-4">
+      <%= @model.brand %> -
+      <%= @model.name %>
+    </h2>
+    <h6 class="mb-5">
+      <%= @model.description %>
+    </h6>
+    <h4 class="mb-4">Specs:</h4>
+    <ul class="list-unstyled">
+      <li>
+        <h6>Engine Size:
+          <%= @model.cc %>CC</h6>
+      </li>
+      <li>
+        <h6>Fuel Type:
+          <%= @model.fuel %>
+        </h6>
+      </li>
+      <li>
+        <h6>Weight:
+          <%= @model.weight %> kg</h6>
+      </li>
+      <li>
+        <h6>Size:
+          <%= @model.size %>
+        </h6>
+      </li>
+    </ul>
+  </div>
+</div>
 <!--   <div class="card bg-dark mb-4 text-white rounded-0">
     <img src=<%= @model.photo_url %> class="card-img" alt="...">
     <div class="card-img-overlay">
@@ -57,38 +72,54 @@
   <div class="scooter-cards p-4" style="width:50%">
     <% @scooters.each do |scooter| %>
     <%= link_to scooter_path(scooter) do  %>
-      <div class="card-product mb-3" style="width:100%" >
-        <img src=<%=scooter.photo%> />
-        <div class="card-product-infos">
-          <h2><%= scooter.model.brand%> - <%=scooter.model.name %></h2>
-          <p><strong><%= scooter.price_per_day.to_i %> IDR</strong></p>
-        </div>
+    <div class="card-product mb-3" style="width:100%">
+      <img src=<%=scooter.photo%> />
+      <div class="card-product-infos">
+        <h2>
+          <%= scooter.model.brand%> -
+          <%=scooter.model.name %>
+        </h2>
+        <p><strong>
+            <%= scooter.price_per_day.to_i %> IDR</strong></p>
       </div>
+    </div>
     <% end %>
     <% end %>
   </div>
-
   <div id="map" style="height: 100vh; width: 50%; overflow: hidden;">
     <script>
     console.log('<%= raw @markers.length %>')
     console.log('<%= @mapCenter %>')
+    console.log()
     var map;
+    const scooters = document.querySelectorAll('.card-product')
+
     function initMap() {
-      let mapCenter = new google.maps.LatLng(<%= @mapCenter[0] %>,<%= @mapCenter[1] %>);
+      let mapCenter = new google.maps.LatLng(<%= @mapCenter[0] %>, <%= @mapCenter[1] %>);
       map = new google.maps.Map(
         document.getElementById('map'), {
           center: mapCenter,
-          zoom: 8
+          zoom: 12
         });
-      <% @markers.each do |coords| %>
-    var marker = new google.maps.Marker({
-      position: new google.maps.LatLng(<%= coords[:lat]%>,<%= coords[:lng] %>),
-      map: map
-    });
-    <% end %>
+      <% @markers.each_with_index do |coords, index| %>
+      var marker = new google.maps.Marker({
+        position: new google.maps.LatLng(<%= coords[:lat]%>, <%= coords[:lng] %>),
+        map: map,
+        icon: "/assets/vespa.svg",
+        title: "<%= @scooters[index].model.brand %>"
+      });
+        marker.addListener('mouseover', (event) => {
+        scooters[<%= index %>].classList.add('selected')
+      });
+        marker.addListener('mouseout', (event) => {
+        scooters[<%= index %>].classList.remove('selected')
+      });
+        marker.addListener('click', (event) => {
+        console.log(event);
+      });
+      <% end %>
 
     }
-
     </script>
     <!-- <img src="https://api.mapbox.com/styles/v1/mapbox/streets-v11/static/2.3381,48.8693,10.45,0,0/600x1000?access_token=pk.eyJ1IjoieWNsOTI0IiwiYSI6ImNrMW01MTAxMjAxbjUzZHQxMDkzNmluOHgifQ.YmLp7JF9s4IMwT_rZ4FeuQ" alt=""> -->
   </div>
