@@ -6,7 +6,8 @@ class ModelsController < ApplicationController
       @query = params[:query]
       coordinates = Geocoder.search(params[:query]).first.coordinates
       # @models = Model.includes(:scooters).where("location ILIKE ?", "%#{@query}%").references(:scooters)
-      scooters = Scooter.near(coordinates, 100)
+      available = Scooter.where(availability: true)
+      scooters = available.near(coordinates, 100)
       model_ids = []
       scooters.each {|scooter| model_ids << scooter.model_id}
       @models = Model.where(id: model_ids)
@@ -19,7 +20,8 @@ class ModelsController < ApplicationController
   def show
     @mapCenter = session[:coordinates] || [-8.6478175, 115.1385192]
     @model = Model.find(params[:id])
-    @scooters = @model.scooters.near(@mapCenter, 100)
+    @available = @model.scooters.where(availability: true)
+    @scooters = @available.near(@mapCenter, 100)
     @markers = @scooters.map do |scooter|
       {
         lat: scooter.latitude,
