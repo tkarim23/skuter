@@ -3,15 +3,14 @@
 </div>
 <div class="container">
   <div class="d-flex mb-5">
-
     <div class="booking-show p-2" style="width: 60%">
-
       <% if (@booking.start_date - Date.today).to_i >= 0 %>
-      <h3 class="text-center mb-5">Your upcoming adventure is in <strong><%= (@booking.start_date - Date.today).to_i %> days</strong></h3>
+      <h3 class="text-center mb-5">Your upcoming adventure is in <strong>
+          <%= (@booking.start_date - Date.today).to_i %> days</strong></h3>
       <% else %>
-      <h3 class="text-center mb-5">Your adventure was <strong><%= (Date.today - @booking.start_date).to_i %> days ago</strong></h3>
+      <h3 class="text-center mb-5">Your adventure was <strong>
+          <%= (Date.today - @booking.start_date).to_i %> days ago</strong></h3>
       <% end %>
-
       <div class="card-product mb-3">
         <img src="<%= @booking.scooter.model.photo_url %>" />
         <div class="card-product-infos">
@@ -25,7 +24,6 @@
               <%= (@booking.end_date - @booking.start_date).to_i %> days</strong></p>
         </div>
       </div>
-
       <% if (@booking.start_date - Date.today).to_i >= 0 %>
       <div id="map" style="height: 120px; overflow: hidden;" class="shadow p-3 mb-5 bg-white rounded">
         <script>
@@ -48,38 +46,39 @@
         </script>
       </div>
       <% elsif @booking.review %>
-        <div class="card p-3 shadow p-3 mb-5 bg-white rounded-0", style="height: 120px">
-          <h6><%= @booking.review.content %></h6>
-          <h6><%= @booking.review.rating %></h6>
-        </div>
+      <div class="card p-3 shadow p-3 mb-5 bg-white rounded-0" , style="height: 120px">
+        <h6>
+          <%= @booking.review.content %>
+        </h6>
+        <h6>
+          <%= @booking.review.rating %>
+        </h6>
+      </div>
       <% else %>
-
       <div style="">
         <div class="card p-3">
-        <%= simple_form_for [@booking, @review] do |f| %>
-        <%= f.input :content, label: "How was your experience?" %>
-        <%= f.input :rating, as: :integer, label: "How many stars?" %>
-        <%= f.button :submit %>
-        <% end %>
+          <%= simple_form_for [@booking, @review] do |f| %>
+          <%= f.input :content, label: "How was your experience?" %>
+          <%= f.input :rating, as: :integer, label: "How many stars?" %>
+          <%= f.button :submit %>
+          <% end %>
+        </div>
       </div>
-      </div>
-
       <% end %>
-
     </div>
-
-      <div class="host-details p-2 d-flex flex-column" style="width: 40%">
-        <h3 class="text-center mb-5">Meet your fellow <strong>biker</strong></h3>
+    <div class="host-details p-2 d-flex flex-column" style="width: 40%">
+      <h3 class="text-center mb-5">Meet your fellow <strong>biker</strong></h3>
       <div class="card p-4 shadow p-3 mb-5 bg-white rounded-0">
         <img src="https://assets.entrepreneur.com/content/3x2/2000/20190502194704-ent19-june-editorsnote.jpeg" <%#=@booking.scooter.user.photo %> alt="" class="avatar-square-large mx-auto mb-3">
-        <h5 class="text-center mb-3">James</h5>
-        <h6> Hi! I learnt to ride a motorbike before I learnt to walk. I'm passionate about sharing my city and letting people experience it through the freedom a scooter gives you. Likewise I love travelling to new places and exploring by scooter. The wind in your hair feeling is unmatchable when getting around!</h6>
+        <h5 class="text-center mb-3">
+          <%= @booking.scooter.user.name %>
+        </h5>
+        <h6>
+          <%= @booking.scooter.user.introduction %>
+        </h6>
       </div>
-      </div>
-
     </div>
-
   </div>
-
-  <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBqh7gsRVNiLmZ0L_iOn6Dz22i3tPk3i60&callback=initMap">
-  </script>
+</div>
+<script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBqh7gsRVNiLmZ0L_iOn6Dz22i3tPk3i60&callback=initMap">
+</script>
