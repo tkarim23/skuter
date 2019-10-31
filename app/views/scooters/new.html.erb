@@ -13,6 +13,7 @@
     <%= f.input :mileage, as: :integer, label: "Mileage", hint: "Kms" %>
     <%= f.input :condition, collection: ['Pristine', 'Good', 'It works', 'Yours to fix'] %>
     <%= f.input :photo %>
+    <%= f.input :photo_cache, as: :hidden %>
     <%= f.input :price_per_day, as: :integer, label: "Price per day", hint: "In local currency" %>
     <%= f.button :submit %>
     <% end %>

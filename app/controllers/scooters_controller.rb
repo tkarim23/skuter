@@ -41,7 +41,7 @@ class ScootersController < ApplicationController
   end
 
   def scooter_params
-    params.require(:scooter).permit(:model_id, :location, :age, :mileage, :condition, :photo, :colour, :price_per_day)
+    params.require(:scooter).permit(:model_id, :price_per_day, :location, :age, :mileage, :condition, :photo, :colour, :title)
   end
 end
 
