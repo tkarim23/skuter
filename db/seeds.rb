@@ -95,6 +95,8 @@ puts "seeding Scooters"
   colour: ["Red", 'white', 'black', 'blue', 'pink'].sample)
   scooter.title = "#{scooter.model.name} #{Faker::Marketing.buzzwords}"
   scooter.save!
+  puts 'scooter saved'
+  puts '---'
 end
 
 puts "seeding Scooters - Complete!"

@@ -22,6 +22,9 @@
             <%= @booking.start_date %> -
             <%= @booking.end_date %> <strong>
               <%= (@booking.end_date - @booking.start_date).to_i %> days</strong></p>
+              <% if (@booking.start_date - Date.today).to_i >= 2 %>
+                <%= button_to "Cancel", booking_path(@booking), class: "btn-danger",  method: :delete, data: { confirm: "Are you sure?" }  %>
+              <% end %>
         </div>
       </div>
       <% if (@booking.start_date - Date.today).to_i >= 0 %>
@@ -47,11 +50,11 @@
       </div>
       <% elsif @booking.review %>
       <div class="card p-3 shadow p-3 mb-5 bg-white rounded-0" , style="height: 120px">
-        <h6>
+        <h6>Review:
           <%= @booking.review.content %>
         </h6>
-        <h6>
-          <%= @booking.review.rating %>
+        <h6>Rating:
+          <%= "☆" *@booking.review.rating%>
         </h6>
       </div>
       <% else %>
