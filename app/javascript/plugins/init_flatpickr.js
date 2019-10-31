@@ -14,7 +14,7 @@ flatpickr(startDateInput, {
   mode: "range"
 });
 
-console.log('im in the file')
+console.log('Flatpickr is in the file')
 
 };
 };

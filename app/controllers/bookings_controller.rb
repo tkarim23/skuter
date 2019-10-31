@@ -9,11 +9,13 @@ class BookingsController < ApplicationController
     @booking.end_date = end_date
     @booking.user = current_user
     @booking.scooter_id = params[:scooter_id]
+    @booking.price = ((@booking.end_date - @booking.start_date).to_i) * @booking.scooter.price_per_day
     @booking.save
       redirect_to user_dashboard_path
   end
 
   def show
+    @scooter = @booking.scooter
   end
 
   def edit
