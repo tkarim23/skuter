@@ -1,20 +1,17 @@
 class ReviewsController < ApplicationController
-  def new
-    @reviews = Review.new
-    @scooter = Scooter.find(params[:scooter_id])
-  end
 
   def create
-    @reviews = Review.new(review_params)
-    @scooter = Scooter.find(params[:scooter_id])
-    @review.scooter = @scooter
+    @review = Review.new(review_params)
+    @booking = Booking.find(params[:booking_id])
+    @review.booking = @booking
+    @user = @booking.user
+    @review.user = @user
     if @review.save
-      redirect_to scooter_path(@scooter)
+      redirect_to user_dashboard_path
     else
-      render :new
+      redirect_to booking_path(@booking)
     end
   end
-
 
   private
 
