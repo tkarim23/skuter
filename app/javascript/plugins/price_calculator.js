@@ -3,8 +3,6 @@ const calculatePrice = () => {
   const rangeDatesInput = document.querySelector("#booking_start_date")
   if (rangeDatesInput) {
     rangeDatesInput.addEventListener("change", (event) => {
-      console.log(event)
-      console.log('This should trigger the thing')
       // have our two dates in the right format
       const endDate = new Date(rangeDatesInput.value.split(" ")[2])
       const startDate = new Date(rangeDatesInput.value.split(" ")[0])
@@ -17,8 +15,8 @@ const calculatePrice = () => {
       const showBookingPrice = document.querySelector("#booking-details")
       if (rangeDatesInput.value.length > 12) {
         showBookingPrice.innerHTML = `Numbers of days : ${numberOfDays} <br>
-                                Price per day : ${pricePerDay} <br>
-                                Total : ${bookingTotal}`
+                                Price per day : ${Number(pricePerDay).toLocaleString()}  <br>
+                                Total : ${Number(bookingTotal).toLocaleString()}`
         showBookingPrice.style.display = "show"
       } else {
         showBookingPrice.innerHTML = "Please select two different dates";

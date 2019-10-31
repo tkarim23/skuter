@@ -76,11 +76,10 @@
       <img src=<%=scooter.photo%> />
       <div class="card-product-infos">
         <h2>
-          <%= scooter.model.brand%> -
-          <%=scooter.model.name %>
+          <%= scooter.title %>
         </h2>
-        <p><strong>
-            <%= scooter.price_per_day.to_i %> IDR</strong></p>
+        <p><strong>IDR
+            <%= number_with_delimiter(scooter.price_per_day.to_i, delimiter: ',') %></strong></p>
       </div>
     </div>
     <% end %>
