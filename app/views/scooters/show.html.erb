@@ -1,6 +1,6 @@
 <div class="container">
   <div class="custom-container">
-    <div class="small-container" id='scooter-container'>
+    <div class="small-container" id='scooter-container' style="width:40%;">
       <div class="card">
         <img src="https://ik.imagekit.io/hj8sm3kk7/large/gallery/exterior/73/985/honda-scoopy-esp-left-side-view-full-image-128865.jpg" class="card-img-top" alt="">
         <div class="card-body">
@@ -12,13 +12,13 @@
                 <%= @scooter.mileage %>
               condition:
                 <%= @scooter.condition %>
-              price_per_day:
-                <%= @scooter.price_per_day %>
+              price_per_day:<span id="price">
+                <%= @scooter.price_per_day %></span>
             </p>
         </div>
       </div>
     </div>
-    <div class="small-container" id='booking-container'>
+    <div class="small-container" id='booking-container' style="width:40%; padding: 50px">
       <div id='scooter-booking-dates' data-unavailable="<%= @scooter.unavailable_dates.to_json %>">
         <% if current_user.id != @scooter.user_id  %>
         <%= simple_form_for([@scooter, @booking]) do |f| %>
@@ -27,6 +27,9 @@
         <%= f.submit "Book", class: "btn btn-primary btn-lg btn-block btn-booking" %>
         <% end %>
         <% end %>
+      </div>
+      <div id="booking-details">
+       <p></p>
       </div>
     </div>
   </div>

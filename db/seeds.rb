@@ -79,7 +79,7 @@ puts "seeding Scooters"
 15.times do
   Scooter.create!(model: Model.all.sample,
   user: User.all.sample,
-  location: ["canggu", "london", "madrid", "paris"].sample,
+  location: ["canggu", "london", "madrid", "paris", "singapore", "beijing", "tokyo", "barcelona", "mumbai", "berlin", "Valence", "Rome"].sample,
   age: rand(2010..2019),
   mileage: rand(1..10000),
   condition: ['Pristine', 'Good', 'It works', 'Yours to fix'].sample,

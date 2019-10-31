@@ -1,41 +1,59 @@
-  <div class="card-category mb-5 rounded-0" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(https://images.unsplash.com/photo-1499622610707-0d29d06335a3?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1490&q=80)">
-    <h2 class="my-5 text-center">Make memories with <strong>SKUTER</strong></h2>
-  </div>
-
+<div class="card-category mb-5 rounded-0" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(https://images.unsplash.com/photo-1499622610707-0d29d06335a3?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1490&q=80)">
+  <h2 class="my-5 text-center">Make memories with <strong>SKUTER</strong></h2>
+</div>
 <div class="container">
   <div class="d-flex">
-
-  <div class="booking-show p-2" style="width: 60%">
-    <h3 class="text-center mb-5">Your upcoming adventure is in <strong><%= (@booking.start_date - Date.today).to_i %> days</strong></h3>
-<!--     <div class="card">
+    <div class="booking-show p-2" style="width: 60%">
+      <h3 class="text-center mb-5">Your upcoming adventure is in <strong>
+          <%= (@booking.start_date - Date.today).to_i %> days</strong></h3>
+      <!--     <div class="card">
       <img src=<%= @booking.scooter.photo %> class="card-img-top" alt="...">
       <div class="card-body">
         <h5 class="card-title"><%= @booking.scooter.model.brand %> - <%= @booking.scooter.model.name  %></h5>
         <p class="card-text"></p>
         <a href="#" class="btn btn-primary">Go somewhere</a>
       </div> -->
+      <!-- </div> -->
+      <div class="card-product mb-3">
+        <img src="<%= @booking.scooter.model.photo_url %>" />
+        <div class="card-product-infos">
+          <h2>
+            <%= @booking.scooter.model.brand %> -
+            <%= @booking.scooter.model.name %>
+          </h2>
+          <p>
+            <%= @booking.start_date %> -
+            <%= @booking.end_date %> <strong>
+              <%= (@booking.end_date - @booking.start_date).to_i %> days</strong></p>
+        </div>
+      </div>
+      <div id="map" style="height: 20vh; width: 50%; overflow: hidden;">
+        <script>
+        var map;
 
-    <!-- </div> -->
-    <div class="card-product mb-3" >
-      <img src="<%= @booking.scooter.model.photo_url %>" />
-      <div class="card-product-infos">
-        <h2><%= @booking.scooter.model.brand %> - <%= @booking.scooter.model.name %></h2>
-        <p><%= @booking.start_date %> - <%= @booking.end_date %> <strong><%= (@booking.end_date - @booking.start_date).to_i %> days</strong></p>
+        function initMap() {
+          let mapCenter = new google.maps.LatLng(<%= @scooter.latitude %>, <%= @scooter.longitude %>);
+          map = new google.maps.Map(
+            document.getElementById('map'), {
+              center: mapCenter,
+              zoom: 12
+            });
+          var marker = new google.maps.Marker({
+            position: mapCenter,
+            map: map,
+            icon: "/assets/vespa.svg",
+            title: "<%= @scooter.model.brand %>"
+          });
+        }
+        </script>
+      </div>
+      <div class="host-details p-2 d-flex flex-column" style="width: 40%">
+        <h3 class="text-center mb-5">Meet your fellow <strong>biker</strong></h3>
+        <img src="https://assets.entrepreneur.com/content/3x2/2000/20190502194704-ent19-june-editorsnote.jpeg" <%#=@booking.scooter.user.photo %> alt="" class="avatar-square-large mx-auto">
+        <h5 class="text-center mb-3">James</h5>
+        <h6> Hi! I learnt to ride a motorbike before I learnt to walk. I'm passionate about sharing my city and letting people experience it through the freedom a scooter gives you. Likewise I love travelling to new places and exploring by scooter. The wind in your hair feeling is unmatchable when getting around!</h6>
       </div>
     </div>
-
-
   </div>
-
-  <div class="host-details p-2 d-flex flex-column" style="width: 40%">
-    <h3 class="text-center mb-5">Meet your fellow <strong>biker</strong></h3>
-    <img src="https://assets.entrepreneur.com/content/3x2/2000/20190502194704-ent19-june-editorsnote.jpeg"<%#= @booking.scooter.user.photo %> alt="" class="avatar-square-large mx-auto">
-    <h5 class="text-center mb-3">James</h5>
-    <h6> Hi! I learnt to ride a motorbike before I learnt to walk. I'm passionate about sharing my city and letting people experience it through the freedom a scooter gives you. Likewise I love travelling to new places and exploring by scooter. The wind in your hair feeling is unmatchable when getting around!</h6>
-  </div>
-
-  </div>
-
-</div>
-
-
+  <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBqh7gsRVNiLmZ0L_iOn6Dz22i3tPk3i60&callback=initMap">
+  </script>
