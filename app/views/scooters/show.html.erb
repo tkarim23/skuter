@@ -1,20 +1,20 @@
 <div class="container">
   <div class="custom-container">
-    <div class="small-container" id='scooter-container' style="width:40%;">
+    <div class="small_container" id='scooter-container' style="width:40%;">
       <div class="card">
         <img src="https://ik.imagekit.io/hj8sm3kk7/large/gallery/exterior/73/985/honda-scoopy-esp-left-side-view-full-image-128865.jpg" class="card-img-top" alt="">
         <div class="card-body">
-          <p class="card-text">model:
-                <%= @scooter.model.name %>
-              age:
-                <%= @scooter.age %>
-              mileage:
-                <%= @scooter.mileage %>
-              condition:
-                <%= @scooter.condition %>
-              price_per_day:<span id="price">
-                <%= @scooter.price_per_day %></span>
-            </p>
+          <div class="card-text"><p>Model:
+                <%= @scooter.model.brand %> <%= @scooter.model.name %></p>
+              <p>Age:
+                <%= @scooter.age %> years old</p>
+              <p>Mileage:
+                <%= number_with_delimiter(@scooter.mileage.to_i, delimiter: ',') %> kms</p>
+              <p>Condition:
+                <%= @scooter.condition %></p>
+             <p> Daily Rental: IDR<span hidden id="price" ><%= @scooter.price_per_day.to_i%></span>
+               <%= number_with_delimiter(@scooter.price_per_day.to_i, delimiter: ',') %></p>
+            </div>
         </div>
       </div>
     </div>
@@ -28,7 +28,7 @@
         <% end %>
         <% end %>
       </div>
-      <div id="booking-details">
+      <div style="font-size:14px; padding:10px" id="booking-details">
        <p></p>
       </div>
     </div>
