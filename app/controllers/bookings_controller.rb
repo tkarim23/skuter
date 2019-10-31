@@ -28,6 +28,8 @@ class BookingsController < ApplicationController
   end
 
   def destroy
+    @booking.destroy
+    redirect_to user_dashboard_path
   end
 
   def confirm_booking

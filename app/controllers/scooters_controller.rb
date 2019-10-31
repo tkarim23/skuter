@@ -30,8 +30,10 @@ class ScootersController < ApplicationController
   end
 
   def destroy
-    @scooter.destroy
-    #redirect_to ???
+   #don't destroy instance, just toggle availability
+   @scooter.availability = false
+   @scooter.save!
+    redirect_to user_dashboard_path
   end
 
   private

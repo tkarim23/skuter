@@ -10,7 +10,6 @@ class Scooter < ApplicationRecord
   validates :age, presence: true
   validates :mileage, presence: true
   validates :condition, presence: true
-  validates :photo, presence: true
   validates :price_per_day, presence: true
   validates :title, presence:true
 

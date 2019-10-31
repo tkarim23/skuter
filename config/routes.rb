@@ -5,11 +5,11 @@ Rails.application.routes.draw do
   resources :models, only: [:index, :show]
 
 
-  resources :scooters, only: [:show, :delete, :edit, :update, :new, :create ] do
+  resources :scooters, only: [:show, :destroy, :edit, :update, :new, :create ] do
     resources :bookings, only: [:create]
 end
 
-  resources :bookings, only: [:show] do
+  resources :bookings, only: [:show, :destroy] do
     resources :reviews, only: [:create]
   end
 

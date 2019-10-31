@@ -123,6 +123,11 @@
                 <div class="card-product-infos">
                   <h2><%= scooter.model.brand %> - <%= scooter.model.name %></h2>
                   <p><%= scooter.price_per_day %></p>
+                  <% if scooter.availability == true  %>
+                  <%= button_to "Make unavailable", scooter_path(scooter), class: "btn-danger",  method: :delete, data: { confirm: "Are you sure?" }  %>
+                  <% else %>
+                  <button class="btn-danger">Unavailable</button>
+                  <% end %>
                 </div>
               </div>
               <% end %>
