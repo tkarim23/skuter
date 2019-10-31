@@ -8,6 +8,8 @@ class User < ApplicationRecord
   has_many :bookings
   has_many :reviews
 
+  mount_uploader :photo, PhotoUploader
+
   # validates :name, presence: true
   # validates :location, presence: true
   # validates :bank_account, presence: true, uniqueness: true
