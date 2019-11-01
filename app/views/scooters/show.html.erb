@@ -47,7 +47,7 @@
 
 <div class="container">
   <div class="dflex flex-column reviews-column" style="width: 69%">
-    <% if @reviews %>
+    <% if @reviews.length > 0 %>
       <div class="card mr-3 shadow p-3 mb-5 bg-white rounded-0">
         <h5>Reviews</h5>
         <% @reviews.each do |review| %>
@@ -56,10 +56,6 @@
             <div><% review.rating.times do %><i class='fas fa-star'></i><% end %></div>
           </div>
         <% end %>
-      </div>
-    <% else %>
-      <div class="card">
-        <h5>Be the first to experience and review this SKUTER!</h5>
       </div>
     <% end %>
   </div>

@@ -73,7 +73,7 @@
     <% @scooters.each do |scooter| %>
     <%= link_to scooter_path(scooter) do  %>
     <div class="card-product mb-3" style="width:100%">
-      <img src=<%=scooter.photo%> />
+      <img src=<%=scooter.model.photo_url%> />
       <div class="card-product-infos">
         <h2>
           <%= scooter.title %>
