@@ -32,6 +32,7 @@
                 <div class="card-product-infos">
                   <h2><%= booking.scooter.model.brand %> - <%= booking.scooter.model.name %></h2>
                   <p><%= booking.start_date %> - <%= booking.end_date %> <strong><%= (booking.end_date - booking.start_date).to_i %> days</strong></p>
+                  <p><strong><%= booking.scooter.user.location %></strong></p>
                 </div>
               </div>
               <% end %>
@@ -48,6 +49,7 @@
                 <div class="card-product-infos">
                   <h2><%= booking.scooter.model.brand %> - <%= booking.scooter.model.name %></h2>
                   <p><%= booking.start_date %> - <%= booking.end_date %> <strong><%= (booking.end_date - booking.start_date).to_i %> days</strong></p>
+                  <p><strong><%= booking.scooter.user.location %></strong></p>
                 </div>
               </div>
               <% end %>
@@ -144,13 +146,15 @@
           <div class="card col-sm-6 col-md-6">
             <h4 class="my-3" style="color: grey">My Profile</h4>
             <div class="card p-4 shadow p-3 mb-5 bg-white rounded-0">
-            <img src="https://assets.entrepreneur.com/content/3x2/2000/20190502194704-ent19-june-editorsnote.jpeg" <%#=@booking.scooter.user.photo %> alt="" class="avatar-square-large mx-auto mb-3">
+            <img src="https://images.daznservices.com/di/library/GOAL/c7/42/karim-benzema-real-madrid-2019-20_sktvp912vplw1vmbqe0237n3m.png?t=-473330675&quality=100&h=300" <%#=@booking.scooter.user.photo %> alt="" class="avatar-square-large mx-auto mb-3">
             <h5 class="text-center mb-3">
             <%= current_user.name %>
             </h5>
             <h6>
             <%= current_user.introduction %>
         </h6>
+            <h6 class="pt-3">Current Location: <strong><%= current_user.location %></strong>  <i class="fas fa-map-pin"></i></h6>
+            <h6 class="pt-3">No of SKUTER experiences: <strong><%= current_user.bookings.length.to_i %></strong>  <i class="fas fa-map-pin"></i></h6>
       </div>
           </div>
 
