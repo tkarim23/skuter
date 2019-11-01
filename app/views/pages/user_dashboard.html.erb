@@ -63,7 +63,7 @@
             <h4 class="my-3" style="color: grey">Listings to confirm</h4>
 
             <% @unconfirmed_future_income.each do |booking| %>
-              <div class="card-product mb-3" >
+              <div class="card-product mb-3" data-id="<%= booking.id %>">
                 <img src="<%= booking.scooter.model.photo_url %>" />
                 <div class="card-product-infos">
                   <h2><%= booking.scooter.model.brand %> - <%= booking.scooter.model.name %></h2>
@@ -72,7 +72,7 @@
                   <i class="fas fa-motorcycle"></i>
                   </div>
                   <div class="confirm-button">
-                    <%= link_to "confirm", confirm_booking_path(booking), method: :post %>
+                    <%= link_to "confirm", confirm_booking_path(booking), method: :post, remote: true, class: "btn btn-primary" %>
                   </div>
                 </div>
               </div>
@@ -80,7 +80,7 @@
 
 
             <h4 class="my-3" style="color: grey">Upcoming Listings</h4>
-
+              <div class="upcoming-listings">
               <% @confirmed_future_income.each do |booking| %>
               <div class="card-product mb-3" >
                 <img src="<%= booking.scooter.model.photo_url %>" />
@@ -93,6 +93,7 @@
                 </div>
               </div>
               <% end %>
+              </div>
           </div>
 
           <div class="card col-sm-6 col-md-6">

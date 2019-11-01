@@ -35,8 +35,17 @@ class BookingsController < ApplicationController
   def confirm_booking
     @booking = Booking.find(params[:booking_id])
     @booking.confirmed = true
-    @booking.save
-    redirect_to user_dashboard_path
+    if @booking.save
+      respond_to do |format|
+        format.html { redirect_to user_dashboard_path }
+        format.js
+      end
+    else
+      respond_to do |format|
+        format.html { render 'pages/user_dashboard'}
+        format.js
+      end
+    end
   end
 
    private
