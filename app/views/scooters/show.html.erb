@@ -11,10 +11,10 @@
       <img src=<%= @scooter.model.photo_url %> />
       <div class="card-product-infos">
         <h2><%= @scooter.model.brand %> <%= @scooter.model.name %></h2>
-        <p>Age:<%= @scooter.age %> years old</p>
-        <p>Mileage:<%= number_with_delimiter(@scooter.mileage.to_i, delimiter: ',') %> kms</p>
-        <p>Condition:<%= @scooter.condition %></p>
-        <p> Daily Rental: IDR<span hidden id="price" ><%= @scooter.price_per_day.to_i%></span><%= number_with_delimiter(@scooter.price_per_day.to_i, delimiter: ',') %></p>
+        <p>Year: <%= @scooter.age %></p>
+        <p>Mileage: <%= number_with_delimiter(@scooter.mileage.to_i, delimiter: ',') %> kms</p>
+        <p>Condition: <%= @scooter.condition %></p>
+        <p>Daily Rental: IDR <span hidden id="price" ><%= @scooter.price_per_day.to_i%></span><%= number_with_delimiter(@scooter.price_per_day.to_i, delimiter: ',') %></p>
       </div>
     </div>
 
@@ -28,6 +28,10 @@
         <%= f.input :start_date, as: :string, type: :text , label: false%>
         <%= f.submit "Book", class: "btn btn-primary btn-lg btn-block btn-booking" %>
         <% end %>
+        <% else %>
+        <h5 class="mt-5 text-center"><%= current_user.name %></h5>
+        <h5 class="text-center">Welcome to your SKUTER</h5>
+        <%= link_to "My Profile", user_dashboard_path(current_user), class:"btn btn-flat mt-3" %>
         <% end %>
       </div>
       <div id="booking-details" class="pt-4 text-center">
