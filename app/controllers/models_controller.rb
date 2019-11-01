@@ -29,5 +29,5 @@ class ModelsController < ApplicationController
       }
     end
   end
-  session.delete(:coordinates)
+  session.delete(:coordinates) if session[:coordinates]
 end
