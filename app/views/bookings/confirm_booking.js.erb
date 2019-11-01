@@ -1,4 +1,5 @@
 listing = document.querySelector("[data-id='<%= @booking.id %>']")
+console.log(listing)
 listing.querySelector('i').style.color = 'green'
 listing.querySelector('a').style.display = 'none'
 listingHtml = `<div class='card-product mb-3' data-id='<%= @booking.id %>'>${listing.innerHTML}</div>`
