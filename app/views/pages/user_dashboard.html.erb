@@ -141,6 +141,19 @@
               <% end %>
           </div>
 
+          <div class="card col-sm-6 col-md-6">
+            <h4 class="my-3" style="color: grey">My Profile</h4>
+            <div class="card p-4 shadow p-3 mb-5 bg-white rounded-0">
+            <img src="https://assets.entrepreneur.com/content/3x2/2000/20190502194704-ent19-june-editorsnote.jpeg" <%#=@booking.scooter.user.photo %> alt="" class="avatar-square-large mx-auto mb-3">
+            <h5 class="text-center mb-3">
+            <%= current_user.name %>
+            </h5>
+            <h6>
+            <%= current_user.introduction %>
+        </h6>
+      </div>
+          </div>
+
       </div>
 
     </div>
