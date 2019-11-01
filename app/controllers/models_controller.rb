@@ -29,7 +29,6 @@ class ModelsController < ApplicationController
         lng: scooter.longitude
       }
     end
-    raise
     session.delete(:coordinates) if session[:coordinates]
   end
 end
