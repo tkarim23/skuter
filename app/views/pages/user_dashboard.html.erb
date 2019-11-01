@@ -119,18 +119,23 @@
             <h4 class="my-3" style="color: grey">My Skuters</h4>
 
               <% @owned_scooters.each do |scooter| %>
-              <div class="card-product mb-3" >
-                <img src="<%= scooter.model.photo_url %>" />
-                <div class="card-product-infos">
-                  <h2><%= scooter.model.brand %> - <%= scooter.model.name %></h2>
-                  <p><%= scooter.price_per_day %></p>
-                  <% if scooter.availability == true  %>
-                  <%= button_to "Make unavailable", scooter_path(scooter), class: "btn-danger",  method: :delete, data: { confirm: "Are you sure?" }  %>
-                  <% else %>
-                  <button class="btn-danger">Unavailable</button>
-                  <% end %>
+                <div class="card-product mb-3" >
+                  <img src="<%= scooter.model.photo_url %>" />
+                  <div class="card-product-infos">
+                    <div class="botton-edit">
+                    <i class="far fa-edit" data-id="<%= scooter.id %>"></i>
+                    </div>
+                    <h2><%= scooter.model.brand %> - <%= scooter.model.name %></h2>
+                    <p><%= scooter.price_per_day %></p>
+                    <% if scooter.availability == true  %>
+                    <%= button_to "Make unavailable", scooter_path(scooter), class: "btn-danger",  method: :delete, data: { confirm: "Are you sure?" }  %>
+                    <% else %>
+                    <button class="btn-danger">Unavailable</button>
+                    <% end %>
+                  </div>
                 </div>
-              </div>
+
+                <%= render 'scooters/form', scooter: scooter %>
               <% end %>
           </div>
 

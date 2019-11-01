@@ -1,6 +1,6 @@
-<div class="row justify-content-center">
+<div class="row justify-content-center d-none scooter-edit-form" id="scooter-form-<%= scooter.id %>">
   <div class="col-sm-6 col-sm-offset-2">
-    <%= simple_form_for @scooter do |f| %>
+    <%= simple_form_for scooter do |f| %>
     <%= f.association :model %>
     <%= f.input :title, label: "Give it a cool name" %>
     <%= f.input :colour %>
