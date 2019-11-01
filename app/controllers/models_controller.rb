@@ -12,6 +12,7 @@ class ModelsController < ApplicationController
       scooters.each {|scooter| model_ids << scooter.model_id}
       @models = Model.where(id: model_ids)
       session[:coordinates] = coordinates
+      raise
     else
       @models = Model.all
     end
@@ -28,6 +29,7 @@ class ModelsController < ApplicationController
         lng: scooter.longitude
       }
     end
+    raise
+    session.delete(:coordinates) if session[:coordinates]
   end
-  session.delete(:coordinates) if session[:coordinates]
 end
