@@ -67,7 +67,7 @@ puts "seeding Models - Complete"
 # USERS
 puts "seeding Users"
 
-10.times do
+50.times do
  User.create!(
   email: Faker::Internet.email,
   password: "password",
@@ -78,12 +78,21 @@ puts "seeding Users"
   )
 end
 
+User.create!(
+  email: "test@hotmail.com",
+  password: "password",
+  introduction: "#{Faker::Quote.most_interesting_man_in_the_world}. #{Faker::Quote.most_interesting_man_in_the_world}",
+  name: "Karim",
+  location: "canggu",
+  photo: "photo.jpg"
+  )
+
 puts "seeding Users - Complete!"
 
 # SCOOTERS
 puts "seeding Scooters"
 
-50.times do
+300.times do
   scooter = Scooter.new(model: Model.all.sample,
   user: User.all.sample,
   location: ["canggu", "london", "madrid", "paris", "singapore", "beijing", "tokyo", "barcelona", "mumbai", "berlin", "Valence", "Rome"].sample,
@@ -118,7 +127,7 @@ from + rand(till - from)
 end
 
  # Bookings past
- 50.times do
+ 200.times do
   fecha = random_date_past
   booking =   Booking.new(user: User.all.sample,
              scooter: Scooter.all.sample,
@@ -135,7 +144,7 @@ end
 end
 
   # Bookings upcoming
-  50.times do
+  200.times do
     fecha2 = random_date_upcoming
   booking = Booking.new(user: User.all.sample,
              scooter: Scooter.all.sample,
